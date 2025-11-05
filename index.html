@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Habit Tracker App</h1>
+  <div class="containers">
+    <div id="totalHabitsBox"  class="Box">
+      <h2>0</h2>
+    </div>
+    <div id="CompletedBox" class="Box">
+      <h2>0</h2>
+    </div>
+    <div id="streakBox" class="Box">
+      <h2>0</h2>
+    </div>
+  </div>
+  <div class="main">
+    <input type="text" id="habitInput" class="habitInput" placeholder="Enter Habit Here">
+    <select name="" id="selectCategory">
+      <option value="health">Health</option>
+      <option value="fitness">Fitness</option>
+      <option value="learning">Learning</option>
+      <option value="productivity">Productivity</option>
+      <option value="dailyHabits">DailyHabits</option>
+    </select>
+    <button id="addHabit">Add Habit</button>
+  </div>
+  <div class="filtered">
+    <button class="filter active" data-filter="All">All</button>
+    <button class="filter" data-filter="Health">Health</button>
+    <button class="filter" data-filter="Fitness">Fitness</button>
+    <button class="filter" data-filter="Learning">Learning</button>
+    <button class="filter" data-filter="Productivity">Productivity</button>
+    <button class="filter" data-filter="DailyHabits">DailyHabits</button>
+  </div>
+  <div id="habitsList" class="habitsList"></div>
+</body>
+<script src="script.js"></script>
+</html>
