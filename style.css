@@ -1,0 +1,178 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(99, 236, 81);
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:2.5rem;
+  color: white;
+  text-align: center;
+  margin: 2em 2em 0 2em;
+}
+
+.containers{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0.5em auto;
+}
+.Box{
+  height: 120px;
+  width: 15%;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 35px;
+  color: black;
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+  width: 48%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.main .habitInput{
+  height: 40px;
+  width: 80%;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.main #selectCategory{
+   height: 40px;
+  width: 17%;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.main button{
+     height: 40px;
+  width: 17%;
+  margin: 10px 4px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: rgb(99, 236, 81);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border: none;
+  font-weight: 700;
+}
+
+.main button:hover{
+   background-color: rgb(70, 182, 55);
+}
+
+.filtered{
+  background-color: white;
+  width: 48%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5em auto;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.filtered .active{
+  height: 40px;
+  width: 10%;
+  background-color: rgb(99, 236, 81);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.filter{
+   height: 40px;
+  width: 16%;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+}
+
+.filter:hover{
+  border: 2px solid rgb(99, 236, 81);
+}
+
+@media (max-width: 1240px){
+  .main, .containers, .filtered, .Box{
+    width: 94%;
+  }
+
+  .containers{
+    gap: 10px;
+  }
+}
+
+@media (max-width: 700px){
+  h1{
+    font-size: 2rem;
+  }
+
+.main #selectCategory{
+  width: 30%;
+}
+ #addHabit{
+  width: 30%;
+}
+}
+
+@media (max-width: 500px){
+
+  .Box{
+    height: 105px;
+  }
+  .main{
+    padding: 10px;
+  }
+  .habitInput{
+    max-width: 100%;
+  }
+  #addHabit{
+  font-size: 12px;
+}
+
+.filtered{
+  padding: 10px;
+}
+
+.filter{
+  font-size: 12px;
+  width: 40%;
+  margin: 2px;
+}
+
+.filtered .active{
+  width: 40%;
+}
+}
+
+@media (max-width: 344px){
+  h1{
+    font-size: 1.5rem;
+  }
+
+  .filter, #addHabit{
+    font-size: 10px;
+  }
+}
