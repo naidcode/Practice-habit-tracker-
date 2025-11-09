@@ -83,15 +83,15 @@ isCompletedToday(habitId){
   filtering(filter){
     let habit = this.getHabits()
     if(filter === "health"){
-      return habit.filter(f => f.type === "Health" )
+      return habit.filter(f => f.type === "health" )
     } else if(filter === "fitness"){
-      return habit.filter(f => f.type === "Fitness")
+      return habit.filter(f => f.type === "fitness")
     } else if(filter === "learning"){
-      return habit.filter(f => f.type === "Learning")
+      return habit.filter(f => f.type === "learning")
     } else if(filter === "productivity"){
-      return habit.filter(f => f.type === "Productivity")
+      return habit.filter(f => f.type === "productivity")
     } else if(filter === "dailtHabits"){
-      return this.#habits.filter(f => f.type === "DailyHabits")
+      return this.#habits.filter(f => f.type === "dailyHabits")
     }
     
     return habit;
@@ -147,8 +147,8 @@ class UIRenderer{
     if(filters.length === 0){
     habitsList.innerHTML =  `
       <div class="emptystorage">
-      <h2 class="emptystorage">No Habit ${filter === "All" ? "yet" : "here"}</h2>
-      <p class="emptyPara">${filter === "Health" || filter === "Fitness" || filter === "Learning" || filter === "Productivity" || filter === "DailyHabits" ? "no habit in this type" : "add your daily habits to track"}</p>
+      <h2 >No Habit ${filter === "All" ? "yet" : "here"}</h2>
+      <p class="emptyPara">${filter === "health" || filter === "fitness" || filter === "learning" || filter === "productivity" || filter === "dailyHabits" ? "no habit in this type" : "add your daily habits to track"}</p>
       </div>
       `;
       return
