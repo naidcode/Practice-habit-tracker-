@@ -34,69 +34,69 @@ class HabitManager{
     if(!habit) return;
 
     const today = new Date().toDateString();
-
     if(habit.completed.includes(today)){
       alert("already completed today!")
-    return;
-
+      return;
+      
     }
     habit.completed.push(today);
-
+    
     this.calculateStreak(habitId)
   };
-
+  
   calculateStreak(habitId){
     let habit = this.#habits.find(f => f.id === habitId);
-
+    
     if(!habit || habit.completed.length === 0){
       habit.streak = 0
       return;
     };
-
+    
     let streak = 0
     const today = new Date();
-
+    
     for (let i = 0; i < 365; i++) {
       const checkDate = new Date(today);
       checkDate.setDate(today.getDate() - i);
-      const dateString = checkDate.toDateString();
-
-      if(habit.completed.includes(dateString)){
+      
+      if(habit.completed.includes(checkDate.toDateString())){
         streak++;
-
+        
       } else{
-      break;
+        break;
+      }
     }
-  }
-  habit.streak = streak;
-};
-
-isCompletedToday(habitId){
+    habit.streak = streak;
+  };
+  
+  isCompletedToday(habitId){
   const habit = this.#habits.find(f => f.id === habitId);
   if(!habit) return false;
-
+  
   const today = new Date().toDateString();
-  return habit.completed.includes(today);
+  let returning = habit.completed.includes(today);
+
+  return returning
 }
 
 
-  filtering(filter){
-    let habit = this.getHabits()
-    if(filter === "health"){
-      return habit.filter(f => f.type === "health" )
+filtering(filter){
+  let habit = this.getHabits()
+  if(filter === "health"){
+    return habit.filter(f => f.type === "health" )
     } else if(filter === "fitness"){
       return habit.filter(f => f.type === "fitness")
     } else if(filter === "learning"){
       return habit.filter(f => f.type === "learning")
     } else if(filter === "productivity"){
       return habit.filter(f => f.type === "productivity")
-    } else if(filter === "dailtHabits"){
-      return this.#habits.filter(f => f.type === "dailyHabits")
+    } else if(filter === "dailyHabits"){
+      return habit.filter(f => f.type === "dailyHabits")
     }
     
     return habit;
   }
-
+  
   
   
   totalHabits(){
@@ -141,16 +141,15 @@ class UIRenderer{
 
   renderhabitsList(filter = "all"){
     let habitsList = document.getElementById("habitsList");
-    let habits = this.manager.getHabits();
     let filters = this.manager.filtering(filter);
 
     if(filters.length === 0){
     habitsList.innerHTML =  `
       <div class="emptystorage">
-      <h2 >No Habit ${filter === "All" ? "yet" : "here"}</h2>
+      <h2 >No Habit ${filter === "ll" ? "yet" : "here"}</h2>
       <p class="emptyPara">${filter === "health" || filter === "fitness" || filter === "learning" || filter === "productivity" || filter === "dailyHabits" ? "no habit in this type" : "add your daily habits to track"}</p>
       </div>
-      `;
+      `
       return
     }
 
@@ -172,6 +171,7 @@ class UIRenderer{
           </div>
           <div class="habit-info">
             <span class="habit-streak">🔥 Streak: ${habit.streak} days</span>
+            <span class="date">${habit.createDate}</span>
           </div>
           <div class="habit-progress">
             <div class="progress-bar">
@@ -209,7 +209,7 @@ class App{
   constructor() {
     this.manager = new HabitManager();
     this.renderer = new UIRenderer(this.manager)
-    this.currentFilter = "All";
+    this.currentFilter = "all";
 
     this.saveEventListener()
   }
@@ -252,7 +252,7 @@ class App{
     document.querySelector(".filtered").addEventListener("click" , (e) =>{
 
       if(e.target.classList.contains("filter")){
-        this.currentFilter = e.target.dataset.filter.toLowerCase();
+        this.currentFilter = e.target.dataset.filter
 
         document.querySelectorAll(".filter").forEach(button => {
           button.classList.remove("active")
@@ -270,5 +270,8 @@ class App{
 
 }
 
+
 let app = new App();
 app.renderer.renderAll()
+let manager = new HabitManager();
+manager.markComplete()
