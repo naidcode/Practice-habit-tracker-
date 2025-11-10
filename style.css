@@ -241,6 +241,13 @@ h1{
     color: #999;
 }
 
+.date{
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+  font-size: 14px;
+  padding: 5px;
+}
+
 @media (max-width: 1240px){
   .main, .containers, .filtered, .Box{
     width: 94%;
