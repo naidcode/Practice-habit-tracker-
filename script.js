@@ -30,17 +30,17 @@ class HabitManager{
   }
 
   markComplete(habitId){
-    const habit = this.#habits.find(f => f.id === habitId);
+    let habit = this.#habits.find(f => f.id === habitId);
     if(!habit) return;
 
-    const today = new Date().toDateString();
+    let today = new Date().toDateString();
     if(habit.completed.includes(today)){
-      alert("already completed today!")
-      return;
-      
+      alert("habit already completed today")
+      return
     }
+
     habit.completed.push(today);
-    
+
     this.calculateStreak(habitId)
   };
   
@@ -57,7 +57,7 @@ class HabitManager{
     
     for (let i = 0; i < 365; i++) {
       const checkDate = new Date(today);
-      checkDate.setDate(today.getDate() - i);
+    checkDate.setDate(today.getDate() + i);
       
       if(habit.completed.includes(checkDate.toDateString())){
         streak++;
@@ -146,7 +146,7 @@ class UIRenderer{
     if(filters.length === 0){
     habitsList.innerHTML =  `
       <div class="emptystorage">
-      <h2 >No Habit ${filter === "ll" ? "yet" : "here"}</h2>
+      <h2 >No Habit ${filter === "all" ? "yet" : "here"}</h2>
       <p class="emptyPara">${filter === "health" || filter === "fitness" || filter === "learning" || filter === "productivity" || filter === "dailyHabits" ? "no habit in this type" : "add your daily habits to track"}</p>
       </div>
       `

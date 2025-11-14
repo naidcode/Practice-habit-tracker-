@@ -249,7 +249,7 @@ h1{
 }
 
 @media (max-width: 1240px){
-  .main, .containers, .filtered, .Box{
+  .main, .containers, .filtered, .Box, .habit-card ,.emptystorage{
     width: 94%;
   }
 
@@ -269,12 +269,20 @@ h1{
  #addHabit{
   width: 30%;
 }
+
+.Box h2{
+  font-size: 1.4rem;
+}
 }
 
 @media (max-width: 500px){
 
   .Box{
     height: 105px;
+  }
+
+  .Box h2{
+    font-size: 22px;
   }
   .main{
     padding: 10px;
